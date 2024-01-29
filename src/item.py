@@ -1,3 +1,6 @@
+import csv
+
+
 class Item:
     """
     Класс для представления товара в магазине.
@@ -24,6 +27,10 @@ class Item:
 
     @name.setter
     def name(self, name):
+        """
+        Прверка длинны наименования товара,
+        чтобы было не более 10 символов.
+        """
         if len(name) > 10:
             self.__name = name[:10]
         else:
@@ -43,3 +50,23 @@ class Item:
         Применяет установленную скидку для конкретного товара.
         """
         self.price *= self.pay_rate
+
+    @classmethod
+    def instantiate_from_csv(cls, all):
+        """
+        Добавление экземпляра класса из csv файла.
+        """
+        cls.all = []
+        with open('../src/items.csv', newline="\n") as csv_file:
+            reader = csv.DictReader(csv_file)
+            items = list(reader)
+            for item in items:
+                cls(str(item["name"]), float(item["price"]), int(item["quantity"]))
+
+    @staticmethod
+    def string_to_number(str_number):
+        """
+        Возвращает число из числа-строки.
+        """
+        number = float(str_number)
+        return int(number)
