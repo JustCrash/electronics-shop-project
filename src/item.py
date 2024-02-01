@@ -33,15 +33,12 @@ class Item:
         return self.__name
 
     @name.setter
-    def name(self, name):
+    def name(self, new_name):
         """
         Прверка длинны наименования товара,
         чтобы было не более 10 символов.
         """
-        if len(name) > 10:
-            self.__name = name[:10]
-        else:
-            self.__name = name
+        self.__name = new_name[:10]
 
     def calculate_total_price(self) -> float:
         """
