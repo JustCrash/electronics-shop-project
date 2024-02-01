@@ -40,3 +40,13 @@ def test_name():
     assert Item.name == 'Смартфон'
     Item.name = 'СуперСмартфон'
     assert Item.name == 'СуперСмартфон'
+
+
+def test__repr__():
+    item1 = Item("Смартфон", 10000, 20)
+    assert repr(item1) == "Item('Смартфон', 10000, 20)"
+
+
+def test__str__():
+    item1 = Item("Смартфон", 10000, 20)
+    assert str(item1) == 'Смартфон'
