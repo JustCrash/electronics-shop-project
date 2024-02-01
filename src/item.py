@@ -23,13 +23,23 @@ class Item:
         Item.all.append(self)
 
     def __repr__(self):
+        """
+        Вывод класса, названия товара,
+        а также его цены и кол-ва
+        """
         return f"{self.__class__.__name__}('{self.__name}', {self.price}, {self.quantity})"
 
     def __str__(self):
+        """
+        Вывод названия товара с помощью метода str
+        """
         return f"{self.__name}"
 
     @property
     def name(self):
+        """
+        Приват отрибута name
+        """
         return self.__name
 
     @name.setter
