@@ -85,3 +85,13 @@ class Item:
         """
         number = float(str_number)
         return int(number)
+
+    def __add__(self, other):
+        """
+        Магический метод, который позволяет прибавлять к экземпляру класса объект произвольного типа данных
+        :param other: Принимает остаток товара Phone и складывает с общим остатком товара в магазине
+        :return: Выводит общие колличество
+        """
+        if isinstance(other, Item):
+            return int(self.quantity) + int(other.quantity)
+        raise TypeError("Складывать можно только объекты классов с родительским классом Item")
